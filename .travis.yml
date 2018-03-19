@@ -25,6 +25,6 @@ deploy:
 notifications:
   email:
     recipients:
-    - myemail@address.com
+    - adaam.ko@icloud.com
     on_success: always
     on_failure: always
