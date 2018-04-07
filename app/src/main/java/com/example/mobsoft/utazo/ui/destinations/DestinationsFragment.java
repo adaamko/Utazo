@@ -7,11 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mobsoft.utazo.R;
+import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
+
+import javax.inject.Inject;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class DestinationsFragment extends Fragment implements DestinationsScreen{
+    @Inject
+    DetailsPresenter detailsPresenter;
 
     public DestinationsFragment() {
     }

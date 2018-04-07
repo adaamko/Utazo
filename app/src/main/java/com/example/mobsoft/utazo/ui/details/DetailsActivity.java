@@ -5,7 +5,12 @@ import android.os.Bundle;
 
 import com.example.mobsoft.utazo.R;
 
+import javax.inject.Inject;
+
 public class DetailsActivity extends AppCompatActivity implements DetailsScreen{
+
+    @Inject
+    DetailsPresenter detailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
