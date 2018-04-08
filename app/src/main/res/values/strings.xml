@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Utazo</string>
+    <string name="title_activity_destinations">DestinationsActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
