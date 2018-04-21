@@ -3,10 +3,12 @@ package com.example.mobsoft.utazo;
 import com.example.mobsoft.utazo.interactor.InteractorModule;
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsInteractor;
 import com.example.mobsoft.utazo.ui.UIModule;
+import com.example.mobsoft.utazo.ui.about.AboutPresenter;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsFragment;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsPresenter;
 import com.example.mobsoft.utazo.ui.details.DetailsActivity;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
+import com.example.mobsoft.utazo.ui.main.MainPresenter;
 
 import javax.inject.Singleton;
 
@@ -24,5 +26,9 @@ public interface UtazoApplicationComponent {
     void inject(DestinationsInteractor destinationsInteractor);
 
     void inject(DetailsPresenter detailsPresenter);
+
+    void inject(MainPresenter mainPresenter);
+
+    void inject(AboutPresenter aboutPresenter);
 
 }
