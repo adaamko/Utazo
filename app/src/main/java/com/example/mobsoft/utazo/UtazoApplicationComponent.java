@@ -1,8 +1,10 @@
 package com.example.mobsoft.utazo;
 
 import com.example.mobsoft.utazo.interactor.InteractorModule;
-import com.example.mobsoft.utazo.interactor.destinations.DestinationsInteractor;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteractor;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 import com.example.mobsoft.utazo.network.NetworkModule;
+import com.example.mobsoft.utazo.repository.RepositoryModule;
 import com.example.mobsoft.utazo.ui.UIModule;
 import com.example.mobsoft.utazo.ui.about.AboutPresenter;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsFragment;
@@ -16,7 +18,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {UIModule.class, InteractorModule.class, NetworkModule.class})
+@Component(modules = {UIModule.class, InteractorModule.class, NetworkModule.class, RepositoryModule.class})
 public interface UtazoApplicationComponent {
     void inject(DetailsActivity detailsActivity);
 
@@ -24,7 +26,9 @@ public interface UtazoApplicationComponent {
 
     void inject(DestinationsPresenter destinationsPresenter);
 
-    void inject(DestinationsInteractor destinationsInteractor);
+    void inject(DestinationsApiInteractor destinationsApiInteractor);
+
+    void inject(DestinationsRepositoryInteractor destinationsRepositoryInteractor);
 
     void inject(DetailsPresenter detailsPresenter);
 

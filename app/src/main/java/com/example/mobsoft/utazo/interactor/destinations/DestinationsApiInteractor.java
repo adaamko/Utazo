@@ -12,12 +12,12 @@ import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class DestinationsInteractor {
+public class DestinationsApiInteractor {
 
     @Inject
     DestinationsApi destinationsApi;
 
-    public DestinationsInteractor() {
+    public DestinationsApiInteractor() {
         UtazoApplication.injector.inject(this);
     }
 
@@ -62,15 +62,15 @@ public class DestinationsInteractor {
         }
     }
 
-    public void createDog() {
+    public void createDestination() {
         // TODO
     }
 
-    public void updateDog() {
+    public void updateDestination() {
         // TODO
     }
 
-    public void deleteDog() {
+    public void deleteDestination() {
         // TODO
     }
 

@@ -4,16 +4,15 @@ import com.example.mobsoft.utazo.model.Destination;
 
 import java.util.List;
 
-public class GetDestinationsEvent {
+public class GetDestinationsEvent extends BaseEvent{
     private List<Destination> destinations;
-    private Throwable throwable;
 
     public GetDestinationsEvent() {
     }
 
     public GetDestinationsEvent(List<Destination> destinations, Throwable throwable) {
+        super(throwable);
         this.destinations = destinations;
-        this.throwable = throwable;
     }
 
     public List<Destination> getDestinations() {
@@ -22,13 +21,5 @@ public class GetDestinationsEvent {
 
     public void setDestinations(List<Destination> destinations) {
         this.destinations = destinations;
-    }
-
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    public void setThrowable(Throwable throwable) {
-        this.throwable = throwable;
     }
 }
