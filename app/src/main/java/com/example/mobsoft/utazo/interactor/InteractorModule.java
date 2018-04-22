@@ -1,6 +1,7 @@
 package com.example.mobsoft.utazo.interactor;
 
-import com.example.mobsoft.utazo.interactor.destinations.DestinationsInteractor;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteractor;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,7 +10,12 @@ import dagger.Provides;
 public class InteractorModule {
 
     @Provides
-    public DestinationsInteractor provideArtistsInteractor() {
-        return new DestinationsInteractor();
+    public DestinationsApiInteractor provideDestinationsApiInteractor() {
+        return new DestinationsApiInteractor();
+    }
+
+    @Provides
+    public DestinationsRepositoryInteractor provideRepositoryInteractor() {
+        return new DestinationsRepositoryInteractor();
     }
 }

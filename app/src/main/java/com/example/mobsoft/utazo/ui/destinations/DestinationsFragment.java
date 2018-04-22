@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mobsoft.utazo.R;
+import com.example.mobsoft.utazo.model.Destination;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,13 +30,14 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
         return inflater.inflate(R.layout.fragment_destinations, container, false);
     }
 
+
     @Override
-    public void showDestinations() {
+    public void showDestinations(List<Destination> destinations) {
 
     }
 
     @Override
-    public void showNetworkError() {
+    public void showNetworkError(String errorMsg) {
 
     }
 

@@ -1,14 +1,18 @@
 package com.example.mobsoft.utazo.ui.details;
 
-import com.example.mobsoft.utazo.interactor.destinations.DestinationsInteractor;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteractor;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 import com.example.mobsoft.utazo.ui.Presenter;
-import com.example.mobsoft.utazo.ui.destinations.DestinationsScreen;
 
 import javax.inject.Inject;
 
 public class DetailsPresenter extends Presenter<DetailsScreen> {
     @Inject
-    DestinationsInteractor destinationsInteractor;
+    DestinationsApiInteractor destinationsApiInteractor;
+
+    @Inject
+    DestinationsRepositoryInteractor destinationsRepositoryInteractor;
+
     @Override
     public void attachScreen(DetailsScreen screen) {
         super.attachScreen(screen);

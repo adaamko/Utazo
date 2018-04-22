@@ -22,6 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+                <meta-data
+                    android:name="DATABASE"
+                    android:value="my_db.db" />
+                <meta-data
+                    android:name="VERSION"
+                    android:value="3" />
+                <meta-data
+                    android:name="QUERY_LOG"
+                    android:value="true" />
     </application>
 
 </manifest>
