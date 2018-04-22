@@ -1,0 +1,198 @@
+swagger: "2.0"
+info:
+  description: "Simple Client for Destinations"
+  version: "1.0.0"
+  title: "Traveler"
+  contact:
+    email: "adaam.ko@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api.sygictravelapi.com"
+basePath: "/1.0/en"
+tags:
+- name: "places"
+  description: "Everything about your destinations."
+schemes:
+- "https"
+paths:
+  /places/list:
+    get:
+      tags:
+      - "places/list"
+      summary: "Get top Places"
+      description: "Return Places"
+      operationId: "getDestinations"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Destination"
+      security:
+        - api_key: []
+  /places:
+    post:
+      tags:
+      - "places"
+      summary: "Add a new Place"
+      description: "Add new Destination"
+      operationId: "addDestination"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Destination object"
+        required: true
+        schema:
+          $ref: "#/definitions/Destination"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Destination"
+        405:
+          description: "Invalid Operation"
+      security:
+        - api_key: []
+    put:
+      tags:
+      - "places"
+      summary: "Update a Place"
+      description: "Update a Destination"
+      operationId: "updateDestination"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Destination object"
+        required: true
+        schema:
+          $ref: "#/definitions/Destination"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Destination"
+        405:
+          description: "Invalid Operation"
+      security:
+        - api_key: []
+  /places/{id}:
+    get:
+      tags:
+      - "places/id"
+      summary: "Finds destination by Id"
+      operationId: "findDestinationById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the returned place"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+              $ref: "#/definitions/Destination"
+        400:
+          description: "Invalid Id supplied"
+      security:
+          - api_key: []
+    delete:
+      tags:
+      - "places/id"
+      summary: "Deletes destination by Id"
+      operationId: "deleteDestinationById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of deleted place"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid Id supplied"
+        404:
+          description: "Destination not found"
+      security:
+          - api_key: []
+securityDefinitions:
+  api_key:
+    type: apiKey
+    in: header       # can be "header", "query" or "cookie"
+    name: X-API-KEY  # name of the header, query parameter or cookie
+definitions:
+  Country:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "France"
+      population:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "Country"
+  Destination:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "Eiffel Tower"
+      description:
+        type: "string"
+        example: "The Eiffel Tower is a wrought iron lattice tower on the Champ de Mars in Paris"
+      photoUrls:
+        type: "array"
+        xml:
+          name: "photoUrl"
+          wrapped: true
+        items:
+          type: "string"
+      country:
+        $ref: "#/definitions/Country"
+      status:
+        type: "string"
+        description: "Destination status"
+        enum:
+        - "Visited"
+        - "Not visited"
+    xml:
+      name: "Destination"
