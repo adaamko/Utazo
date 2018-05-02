@@ -33,6 +33,7 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
 
     public void showDestinationList(){}
 
+    /*
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final GetDestinationsEvent event){
         if (event.getThrowable() != null) {
@@ -46,4 +47,5 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
             }
         }
     }
+    */
 }

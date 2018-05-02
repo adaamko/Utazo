@@ -12,9 +12,15 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.destinations.DestinationsActivity"
-            android:label="@string/title_activity_destinations" />
+            android:label="@string/title_activity_destinations">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.about.AboutActivity" />
-        <activity android:name=".ui.details.DetailsActivity" />
+        <activity android:name=".ui.details.DetailsActivity">
+        </activity>
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

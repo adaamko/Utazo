@@ -8,7 +8,7 @@
     tools:context=".ui.main.MainActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/showDestinations"
         android:layout_width="209dp"
         android:layout_height="51dp"
         android:layout_marginEnd="8dp"
@@ -35,7 +35,7 @@
         app:srcCompat="@drawable/web_about_trip" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/showAbout"
         android:layout_width="203dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
@@ -49,6 +49,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/showDestinations"
         app:layout_constraintVertical_bias="0.277" />
 </android.support.constraint.ConstraintLayout>

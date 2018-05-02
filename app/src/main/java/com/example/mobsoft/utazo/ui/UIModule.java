@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.mobsoft.utazo.ui.destinations.DestinationsPresenter;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
+import com.example.mobsoft.utazo.ui.main.MainPresenter;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -24,6 +25,12 @@ public class UIModule {
     @Provides
     public Context provideContext() {
         return context;
+    }
+
+    @Provides
+    @Singleton
+    public MainPresenter provideMainPresenter() {
+        return new MainPresenter();
     }
 
     @Provides
