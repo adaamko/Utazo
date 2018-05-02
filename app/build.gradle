@@ -75,4 +75,5 @@ dependencies {
 
     // ORM
     compile 'com.github.satyan:sugar:1.5'
+    implementation 'com.android.support:gridlayout-v7:27.1.0'
 }
