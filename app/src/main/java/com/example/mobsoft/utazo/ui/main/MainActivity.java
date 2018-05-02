@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.example.mobsoft.utazo.R;
 import com.example.mobsoft.utazo.UtazoApplication;
+import com.example.mobsoft.utazo.ui.about.AboutActivity;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsActivity;
 
 import javax.inject.Inject;
@@ -29,6 +30,14 @@ public class MainActivity extends AppCompatActivity implements MainScreen{
                 mainPresenter.showDestinations();
             }
         });
+
+        Button btnShowInformation = (Button) findViewById(R.id.showAbout);
+        btnShowInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.showInformation();
+            }
+        });
     }
 
     @Override
@@ -48,4 +57,12 @@ public class MainActivity extends AppCompatActivity implements MainScreen{
         Intent intent = new Intent(getApplicationContext(), DestinationsActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void showInformation(){
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(intent);
+    }
+
+
 }

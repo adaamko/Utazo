@@ -22,5 +22,9 @@ public class MainPresenter extends Presenter<MainScreen> {
     public void showDestinations() {
         screen.showDestinations();
     }
+
+    public void showInformation() {
+        screen.showInformation();
+    }
 }
 
