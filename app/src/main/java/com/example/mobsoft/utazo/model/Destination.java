@@ -23,7 +23,7 @@ public class Destination extends SugarRecord{
     private String image = null;
 
     @SerializedName("country")
-    private Country country = null;
+    private String country = null;
 
 
     public enum StatusEnum {
@@ -97,10 +97,10 @@ public class Destination extends SugarRecord{
     /**
      **/
     @ApiModelProperty(value = "")
-    public Country getCountry() {
+    public String getCountry() {
         return country;
     }
-    public void setCountry(Country country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 

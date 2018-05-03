@@ -52,11 +52,9 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
     @Override
     public void createDestination(String name, String country, String description, boolean checked) {
         Destination destination = new Destination();
-        Country countryDes = new Country();
 
-        countryDes.setName(country);
         destination.setName(name);
-        destination.setCountry(countryDes);
+        destination.setCountry(country);
         destination.setDescription(description);
         Destination.StatusEnum visited = Destination.StatusEnum.NOT_VISITED;
 
@@ -65,11 +63,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
 
         destination.setStatus(visited);
 
-        List<Destination> destinationList = destinationsRepositoryInteractor.getDestinations();
-        for (Destination item : destinationList){
-            destinationsRepositoryInteractor.deleteDestination(item);
-        }
-
+        destinationsRepositoryInteractor.createDestination(destination);
     }
 
     @Override

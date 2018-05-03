@@ -34,7 +34,7 @@ public class DestinationsAdapter extends RecyclerView.Adapter<DestinationsAdapte
         Destination destination = destinationsList.get(position);
 
         holder.tvName.setText(destination.getName());
-        holder.tvCountry.setText(destination.getCountry().getName().toString());
+        holder.tvCountry.setText(destination.getCountry().toString());
         holder.tvDescription.setText(destination.getDescription());
         holder.tvVisited.setChecked(destination.getStatus().equals(Destination.StatusEnum.VISITED));
     }
