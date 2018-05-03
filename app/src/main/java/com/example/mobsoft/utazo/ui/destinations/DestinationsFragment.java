@@ -2,6 +2,7 @@ package com.example.mobsoft.utazo.ui.destinations;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import com.example.mobsoft.utazo.R;
 import com.example.mobsoft.utazo.UtazoApplication;
 import com.example.mobsoft.utazo.model.Destination;
+import com.example.mobsoft.utazo.ui.about.AboutActivity;
+import com.example.mobsoft.utazo.ui.details.DetailsActivity;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
 
 import java.util.List;
@@ -36,6 +39,7 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
     @Override
     public void onDetach() {
         super.onDetach();
+        destinationsPresenter.detachScreen();
     }
 
     @Override
@@ -56,7 +60,8 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
     }
 
     @Override
-    public void AddDestination() {
-
+    public void addDestination() {
+        Intent intent = new Intent(getActivity().getApplicationContext(), DetailsActivity.class);
+        startActivity(intent);
     }
 }

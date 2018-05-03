@@ -29,7 +29,9 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
 
     public void refreshDestinations(){}
 
-    public void addDestination(){}
+    public void addDestination(){
+        screen.addDestination();
+    }
 
     public void showDestinationList(){}
 

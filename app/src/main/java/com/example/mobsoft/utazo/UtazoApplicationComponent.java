@@ -7,6 +7,7 @@ import com.example.mobsoft.utazo.network.NetworkModule;
 import com.example.mobsoft.utazo.repository.RepositoryModule;
 import com.example.mobsoft.utazo.ui.UIModule;
 import com.example.mobsoft.utazo.ui.about.AboutPresenter;
+import com.example.mobsoft.utazo.ui.destinations.DestinationsActivity;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsFragment;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsPresenter;
 import com.example.mobsoft.utazo.ui.details.DetailsActivity;
@@ -26,6 +27,8 @@ public interface UtazoApplicationComponent {
     void inject(DetailsActivity detailsActivity);
 
     void inject(DestinationsFragment destinationsFragment);
+
+    void inject(DestinationsActivity destinationsActivity);
 
     void inject(DestinationsPresenter destinationsPresenter);
 

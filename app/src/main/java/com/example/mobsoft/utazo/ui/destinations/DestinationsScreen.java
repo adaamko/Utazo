@@ -9,5 +9,5 @@ public interface DestinationsScreen {
 
     void showNetworkError(String errorMsg);
 
-    void AddDestination();
+    void addDestination();
 }
