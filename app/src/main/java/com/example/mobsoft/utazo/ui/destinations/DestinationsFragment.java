@@ -79,6 +79,8 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
                 destinationsPresenter.refreshDestinations();
             }
         });
+
+        destinationsPresenter.refreshDestinations();
         return view;
     }
 

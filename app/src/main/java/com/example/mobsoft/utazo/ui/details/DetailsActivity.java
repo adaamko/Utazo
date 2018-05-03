@@ -1,5 +1,6 @@
 package com.example.mobsoft.utazo.ui.details;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteract
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 import com.example.mobsoft.utazo.model.Country;
 import com.example.mobsoft.utazo.model.Destination;
+import com.example.mobsoft.utazo.ui.about.AboutActivity;
+import com.example.mobsoft.utazo.ui.destinations.DestinationsActivity;
 
 import java.util.List;
 
@@ -45,6 +48,9 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
                 CheckBox tvVisited = (CheckBox) findViewById(R.id.dVisited);
                 boolean checked = tvVisited.isChecked();
                 detailsPresenter.createDestinationDetails(tvName, tvCountry, tvDescription, checked);
+
+                Intent intent = new Intent(getApplicationContext(), DestinationsActivity.class);
+                startActivity(intent);
             }
         });
     }
