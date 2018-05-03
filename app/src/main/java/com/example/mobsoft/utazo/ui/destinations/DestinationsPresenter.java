@@ -1,5 +1,6 @@
 package com.example.mobsoft.utazo.ui.destinations;
 
+import com.example.mobsoft.utazo.UtazoApplication;
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteractor;
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 import com.example.mobsoft.utazo.interactor.destinations.event.GetDestinationsEvent;
@@ -20,6 +21,7 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
     @Override
     public void attachScreen(DestinationsScreen screen) {
         super.attachScreen(screen);
+        UtazoApplication.injector.inject(this);
     }
 
     @Override
@@ -27,7 +29,9 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
         super.detachScreen();
     }
 
-    public void refreshDestinations(){}
+    public void refreshDestinations(){
+        screen.showDestinations(destinationsRepositoryInteractor.getDestinations());
+    }
 
     public void addDestination(){
         screen.addDestination();

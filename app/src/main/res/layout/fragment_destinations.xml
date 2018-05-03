@@ -11,7 +11,7 @@
 
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayoutCryptos"
+        android:id="@+id/swipeRefreshLayoutDestinations"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -25,7 +25,7 @@
             <include layout="@layout/destination_card" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewCryptos"
+                android:id="@+id/recyclerViewDestinations"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
@@ -33,7 +33,7 @@
                 android:id="@+id/tvEmpty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/recyclerViewCryptos"
+                android:layout_below="@id/recyclerViewDestinations"
                 android:gravity="center"
                 android:text="No data"/>
         </LinearLayout>
