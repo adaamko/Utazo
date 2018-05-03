@@ -10,17 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mobsoft.utazo.R;
+import com.example.mobsoft.utazo.UtazoApplication;
+import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 import com.example.mobsoft.utazo.model.Destination;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class DestinationsAdapter extends RecyclerView.Adapter<DestinationsAdapter.ViewHolder>{
     private Context context;
     private List<Destination> destinationsList;
+    @Inject
+    DestinationsRepositoryInteractor destinationsRepositoryInteractor;
 
     public DestinationsAdapter(Context context, List<Destination> destinationsList) {
         this.context = context;
         this.destinationsList = destinationsList;
+        UtazoApplication.injector.inject(this);
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -31,12 +38,24 @@ public class DestinationsAdapter extends RecyclerView.Adapter<DestinationsAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Destination destination = destinationsList.get(position);
+        final Destination destination = destinationsList.get(position);
 
         holder.tvName.setText(destination.getName());
         holder.tvCountry.setText(destination.getCountry().toString());
         holder.tvDescription.setText(destination.getDescription());
         holder.tvVisited.setChecked(destination.getStatus().equals(Destination.StatusEnum.VISITED));
+
+        holder.tvVisited.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox checkBox = (CheckBox)v.findViewById(R.id.tvVisited);
+                if(checkBox.isChecked())
+                    destination.setStatus(Destination.StatusEnum.VISITED);
+                else
+                    destination.setStatus(Destination.StatusEnum.NOT_VISITED);
+                destinationsRepositoryInteractor.updateDestination(destination);
+            }
+        });
     }
 
     @Override
