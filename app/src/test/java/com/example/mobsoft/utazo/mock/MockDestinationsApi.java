@@ -47,7 +47,29 @@ public class MockDestinationsApi implements DestinationsApi {
         destination.setImage("image");
         destination.setCountry("Czech Republic");
         destination.setName("Prague Castle");
+        destination.setDescription("Main City");
+        destination.setStatus(Destination.StatusEnum.NOT_VISITED);
+
+        Destination budapest = new Destination();
+
+        budapest.setImage("image");
+        budapest.setCountry("Hungary");
+        budapest.setName("Budapest");
+        budapest.setDescription("Nice city");
+        budapest.setStatus(Destination.StatusEnum.NOT_VISITED);
+
+        Destination paris = new Destination();
+
+        paris.setImage("image");
+        paris.setCountry("Czech Republic");
+        paris.setName("Prague Castle");
+        paris.setDescription("Main City");
+        paris.setStatus(Destination.StatusEnum.NOT_VISITED);
+
+
         destinations.add(destination);
+        destinations.add(budapest);
+        destinations.add(paris);
 
         Call<List<Destination>> call = new Call<List<Destination>>() {
             @Override

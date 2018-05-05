@@ -5,7 +5,10 @@ import android.content.Context;
 import com.example.mobsoft.utazo.di.Network;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsPresenter;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
+import com.example.mobsoft.utazo.ui.main.MainPresenter;
 import com.example.mobsoft.utazo.utils.UiExecutor;
+
+import org.apache.tools.ant.Main;
 
 import java.util.concurrent.Executor;
 
@@ -35,6 +38,12 @@ public class TestModule {
     @Singleton
     public DetailsPresenter provideDetailsPresenter() {
         return new DetailsPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public MainPresenter provideMainPresenter() {
+        return new MainPresenter();
     }
 
     @Provides

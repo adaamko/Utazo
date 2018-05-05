@@ -4,10 +4,12 @@ import com.google.gson.GsonBuilder;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
+@Module
 public class MockNetworkModule {
 
     @Provides
@@ -20,7 +22,7 @@ public class MockNetworkModule {
 
     @Provides
     @Singleton
-    public MockDestinationsApi provideCryptosApi(Retrofit.Builder retrofitBuilder) {
+    public MockDestinationsApi provideDestinationsApi(Retrofit.Builder retrofitBuilder) {
         return new MockDestinationsApi();
     }
 
