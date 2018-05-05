@@ -7,11 +7,6 @@ import com.example.mobsoft.utazo.ui.Presenter;
 import javax.inject.Inject;
 
 public class MainPresenter extends Presenter<MainScreen> {
-    @Inject
-    DestinationsApiInteractor destinationsApiInteractor;
-
-    @Inject
-    DestinationsRepositoryInteractor destinationsRepositoryInteractor;
 
     @Override
     public void attachScreen(MainScreen screen) {
@@ -22,6 +17,14 @@ public class MainPresenter extends Presenter<MainScreen> {
     public void detachScreen() {
         super.detachScreen();
     }
+
+
+    public void showDestinations() {
+        screen.showDestinations();
     }
 
+    public void showInformation() {
+        screen.showInformation();
+    }
+}
 

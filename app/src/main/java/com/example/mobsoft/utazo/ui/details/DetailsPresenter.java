@@ -7,12 +7,6 @@ import com.example.mobsoft.utazo.ui.Presenter;
 import javax.inject.Inject;
 
 public class DetailsPresenter extends Presenter<DetailsScreen> {
-    @Inject
-    DestinationsApiInteractor destinationsApiInteractor;
-
-    @Inject
-    DestinationsRepositoryInteractor destinationsRepositoryInteractor;
-
     @Override
     public void attachScreen(DetailsScreen screen) {
         super.attachScreen(screen);
@@ -23,5 +17,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
         super.detachScreen();
     }
 
-    public void createDestinationDetails(){}
+    public void createDestinationDetails(String name, String country, String description, boolean checked) {
+        screen.createDestination(name, country, description, checked);
+    }
 }
