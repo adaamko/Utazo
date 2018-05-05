@@ -45,6 +45,10 @@ public class DestinationsAdapter extends RecyclerView.Adapter<DestinationsAdapte
         holder.tvDescription.setText(destination.getDescription());
         holder.tvVisited.setChecked(destination.getStatus().equals(Destination.StatusEnum.VISITED));
 
+        if(position<3){
+            holder.tvVisited.setEnabled(false);
+        }
+
         holder.tvVisited.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

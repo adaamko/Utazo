@@ -2,6 +2,7 @@ package com.example.mobsoft.utazo.ui;
 
 import android.content.Context;
 
+import com.example.mobsoft.utazo.di.Network;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsPresenter;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
 import com.example.mobsoft.utazo.ui.main.MainPresenter;
@@ -43,6 +44,13 @@ public class UIModule {
     @Singleton
     public DetailsPresenter provideDetailsPresenter() {
         return new DetailsPresenter();
+    }
+
+    @Provides
+    @Singleton
+    @Network
+    public Executor provideNetworkExecutor(){
+        return Executors.newFixedThreadPool(1);
     }
 
 }

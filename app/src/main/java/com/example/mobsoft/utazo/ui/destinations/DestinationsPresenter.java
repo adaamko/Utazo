@@ -1,17 +1,25 @@
 package com.example.mobsoft.utazo.ui.destinations;
 
 import com.example.mobsoft.utazo.UtazoApplication;
+import com.example.mobsoft.utazo.di.Network;
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteractor;
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsRepositoryInteractor;
 import com.example.mobsoft.utazo.interactor.destinations.event.GetDestinationsEvent;
 import com.example.mobsoft.utazo.ui.Presenter;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
 public class DestinationsPresenter extends Presenter<DestinationsScreen> {
+    @Inject
+    @Network
+    Executor networkExecutor;
+
     @Inject
     DestinationsApiInteractor destinationsApiInteractor;
 
@@ -22,6 +30,9 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
     public void attachScreen(DestinationsScreen screen) {
         super.attachScreen(screen);
         UtazoApplication.injector.inject(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -37,9 +48,16 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
         screen.addDestination();
     }
 
-    public void showDestinationList(){}
+    public void showDestinationList(){
+        networkExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                destinationsApiInteractor.getDestinations();
+            }
+        });
+    }
 
-    /*
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final GetDestinationsEvent event){
         if (event.getThrowable() != null) {
@@ -49,9 +67,9 @@ public class DestinationsPresenter extends Presenter<DestinationsScreen> {
             }
         } else {
             if (screen != null) {
-                screen.showDestinations(event.getDestinations());
+                screen.addTopDestinations(event.getDestinations());
             }
         }
     }
-    */
+
 }

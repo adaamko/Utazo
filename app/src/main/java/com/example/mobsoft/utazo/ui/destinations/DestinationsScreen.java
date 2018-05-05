@@ -7,6 +7,8 @@ import java.util.List;
 public interface DestinationsScreen {
     void showDestinations(List<Destination> destinations);
 
+    void addTopDestinations(List<Destination> destinations);
+
     void showNetworkError(String errorMsg);
 
     void addDestination();

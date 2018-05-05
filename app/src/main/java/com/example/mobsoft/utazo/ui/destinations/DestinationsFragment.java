@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mobsoft.utazo.R;
 import com.example.mobsoft.utazo.UtazoApplication;
@@ -38,6 +39,7 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
     private SwipeRefreshLayout swipeRefreshLayoutDestinations;
     private TextView tvEmpty;
     private List<Destination> destinationList;
+    private List<Destination> topDestinations;
     private DestinationsAdapter destinationsAdapter;
 
     public DestinationsFragment() {
@@ -68,6 +70,7 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
         recyclerViewDestinations.setLayoutManager(llm);
 
         destinationList = new ArrayList<>();
+        topDestinations = new ArrayList<>();
         destinationsAdapter = new DestinationsAdapter(getContext(), destinationList);
         recyclerViewDestinations.setAdapter(destinationsAdapter);
 
@@ -76,10 +79,12 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
         swipeRefreshLayoutDestinations.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                destinationsPresenter.showDestinationList();
                 destinationsPresenter.refreshDestinations();
             }
         });
 
+        destinationsPresenter.showDestinationList();
         destinationsPresenter.refreshDestinations();
         return view;
     }
@@ -92,6 +97,7 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
         }
 
         destinationList.clear();
+        destinationList.addAll(topDestinations);
         destinationList.addAll(destinations);
         destinationsAdapter.notifyDataSetChanged();
 
@@ -105,8 +111,18 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
     }
 
     @Override
-    public void showNetworkError(String errorMsg) {
+    public void addTopDestinations(List<Destination> destinations) {
+        topDestinations.clear();
+        topDestinations.addAll(destinations);
+        destinationsPresenter.refreshDestinations();
+    }
 
+    @Override
+    public void showNetworkError(String errorMsg) {
+        if (swipeRefreshLayoutDestinations != null) {
+            swipeRefreshLayoutDestinations.setRefreshing(false);
+        }
+        Toast.makeText(getActivity().getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -114,4 +130,5 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
         Intent intent = new Intent(getActivity().getApplicationContext(), DetailsActivity.class);
         startActivity(intent);
     }
+
 }

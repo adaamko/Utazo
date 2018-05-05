@@ -10,9 +10,6 @@ import com.orm.SugarRecord;
 @ApiModel(description = "")
 public class Destination extends SugarRecord{
 
-    @SerializedName("id")
-    private Long id = null;
-
     @SerializedName("name")
     private String name = null;
 
@@ -54,10 +51,10 @@ public class Destination extends SugarRecord{
      **/
     @ApiModelProperty(value = "")
     public Long getId() {
-        return id;
+        return super.getId();
     }
     public void setId(Long id) {
-        this.id = id;
+        super.setId(id);
     }
 
 
@@ -127,7 +124,7 @@ public class Destination extends SugarRecord{
             return false;
         }
         Destination destination = (Destination) o;
-        return Objects.equals(id, destination.id) &&
+        return Objects.equals(super.getId(), destination.getId()) &&
                 Objects.equals(name, destination.name) &&
                 Objects.equals(description, destination.description) &&
                 Objects.equals(image, destination.image) &&
@@ -137,7 +134,7 @@ public class Destination extends SugarRecord{
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, image, country, status);
+        return Objects.hash(super.getId(), name, description, image, country, status);
     }
 
     @Override
@@ -145,7 +142,7 @@ public class Destination extends SugarRecord{
         StringBuilder sb = new StringBuilder();
         sb.append("class Destination {\n");
 
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    id: ").append(toIndentedString(super.getId())).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    image: ").append(toIndentedString(image)).append("\n");
