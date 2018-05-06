@@ -73,8 +73,8 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
     }
 
     @Override
-    public void saveDestination() {
-
+    public List<Destination> getDestinations() {
+        return destinationsRepositoryInteractor.getDestinations();
     }
 
     @Override
