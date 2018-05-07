@@ -3,9 +3,10 @@
     package="com.example.mobsoft.utazo">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".UtazoApplication"
+        android:name=".AnalyticsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -40,6 +41,10 @@
                 <meta-data
                     android:name="QUERY_LOG"
                     android:value="true" />
+                <meta-data
+                    android:name="io.fabric.ApiKey"
+                    android:value="90faac0e3dbf630673e70a9a981c6cf63676cbdf"
+                    />
     </application>
 
 </manifest>

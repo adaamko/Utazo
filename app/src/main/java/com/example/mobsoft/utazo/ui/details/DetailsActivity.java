@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
+import com.example.mobsoft.utazo.AnalyticsApplication;
 import com.example.mobsoft.utazo.R;
 import com.example.mobsoft.utazo.UtazoApplication;
 import com.example.mobsoft.utazo.interactor.destinations.DestinationsApiInteractor;
@@ -18,10 +20,14 @@ import com.example.mobsoft.utazo.model.Country;
 import com.example.mobsoft.utazo.model.Destination;
 import com.example.mobsoft.utazo.ui.about.AboutActivity;
 import com.example.mobsoft.utazo.ui.destinations.DestinationsActivity;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import io.fabric.sdk.android.Fabric;
 
 public class DetailsActivity extends AppCompatActivity implements DetailsScreen {
 
@@ -33,9 +39,12 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
     @Inject
     DestinationsRepositoryInteractor destinationsRepositoryInteractor;
 
+    private Tracker mTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_details);
         UtazoApplication.injector.inject(this);
         Button saveDestination = (Button) findViewById(R.id.saveDestination);
@@ -53,6 +62,9 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
                 startActivity(intent);
             }
         });
+
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
@@ -69,6 +81,8 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
 
         destination.setStatus(visited);
 
+        mTracker.setScreenName("Image~" + "DetailsActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         destinationsRepositoryInteractor.createDestination(destination);
     }
 

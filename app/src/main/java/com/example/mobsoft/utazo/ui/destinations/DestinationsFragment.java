@@ -16,12 +16,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mobsoft.utazo.AnalyticsApplication;
 import com.example.mobsoft.utazo.R;
 import com.example.mobsoft.utazo.UtazoApplication;
 import com.example.mobsoft.utazo.model.Destination;
 import com.example.mobsoft.utazo.ui.about.AboutActivity;
 import com.example.mobsoft.utazo.ui.details.DetailsActivity;
 import com.example.mobsoft.utazo.ui.details.DetailsPresenter;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
     private List<Destination> destinationList;
     private List<Destination> topDestinations;
     private DestinationsAdapter destinationsAdapter;
+    private Tracker mTracker;
 
     public DestinationsFragment() {
         UtazoApplication.injector.inject(this);
@@ -84,8 +88,13 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
             }
         });
 
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+
         destinationsPresenter.showDestinationList();
         destinationsPresenter.refreshDestinations();
+
+
         return view;
     }
 
@@ -108,6 +117,10 @@ public class DestinationsFragment extends Fragment implements DestinationsScreen
             recyclerViewDestinations.setVisibility(View.VISIBLE);
             tvEmpty.setVisibility(View.GONE);
         }
+
+        mTracker.setScreenName("Image~" + "DestinationFragment");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
     }
 
     @Override
